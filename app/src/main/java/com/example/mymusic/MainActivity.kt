@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.mymusic.ui.theme.MYMUSICTheme
 
 class MainActivity : ComponentActivity() {
@@ -63,5 +64,13 @@ class MainActivity : ComponentActivity() {
                             onValueChange = {userComment.value = it},
                             label = { Text("Comment on the song") }
                         )
+
+                        if (showError.value) {
+                            Text(
+                                text = "Error: Please fill in all fields correctly!",
+                                color = MaterialTheme.colorScheme.error,
+                                fontSize = 14.sp
+                            )
+                        }
 
         }
