@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -40,4 +41,27 @@ class MainActivity : ComponentActivity() {
                             text = "MYMUSIC ST10487104",
                             style = MaterialTheme.typography.titleLarge
                         )
+
+
+                        OutlinedTextField(
+                            value = theSongName.value ,
+                            onValueChange = {theSongName.value = it},
+                            label = { Text("Enter song name") }
+                        )
+                        OutlinedTextField(
+                            value = theArtistsName.value ,
+                            onValueChange = {theArtistsName.value = it},
+                            label = { Text("Enter artist name") }
+                        )
+                        OutlinedTextField(
+                            value = theRating.value ,
+                            onValueChange = {theRating.value = it},
+                            label = { Text("Rate the song 1-5") }
+                        )
+                        OutlinedTextField(
+                            value = userComment.value ,
+                            onValueChange = {userComment.value = it},
+                            label = { Text("Comment on the song") }
+                        )
+
         }
