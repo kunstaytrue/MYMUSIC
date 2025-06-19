@@ -28,12 +28,12 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent { //Andile Kundayi ST10487104
-            var currentScreen = remember { mutableStateOf("main") }
-            var theSongName = remember { mutableStateOf("") }
-            var theArtistsName = remember { mutableStateOf("") }
-            var theRating = remember { mutableStateOf("") }
-            var userComment = remember { mutableStateOf("") }
-            var showError = remember { mutableStateOf(false) }
+            val currentScreen = remember { mutableStateOf("main") }
+            val theSongName = remember { mutableStateOf("") }
+            val theArtistsName = remember { mutableStateOf("") }
+            val theRating = remember { mutableStateOf("") }
+            val userComment = remember { mutableStateOf("") }
+            val showError = remember { mutableStateOf(false) }
             val  playListManager = remember { mutableStateListOf<playListManager>() }
 
             Scaffold {padding ->
@@ -61,9 +61,9 @@ class MainActivity : ComponentActivity() {
                             label = { Text("Rate the song 1-5") }
                         )
                         OutlinedTextField(
-                            value = userComment.value ,
-                            onValueChange = {userComment.value = it},
-                            label = { Text("Comment on the song") }
+                            value = userComment.value,
+                            onValueChange = { userComment.value = it },
+                            label = { Text("Comments")}
                         )
 
                         if (showError.value) {
@@ -76,7 +76,7 @@ class MainActivity : ComponentActivity() {
                         }
 
                         Button(onClick = {
-                            if (theSongName.value.isBlank() || theArtistsName.value.isBlank() || theRating.value.isBlank() || userComment.value.toIntOrNull() == null) {
+                            if (theSongName.value.isBlank() || theArtistsName.value.isBlank() || userComment.value.isBlank() ||theRating.value.toIntOrNull() == null) {
                                 showError.value = true
                             } else {
                                 playListManager.add(playListManager(theSongName.value, theArtistsName.value, theRating.value.toInt(), userComment.value))
@@ -103,9 +103,9 @@ class MainActivity : ComponentActivity() {
                             style = MaterialTheme.typography.titleLarge
                         )
 
-                        playListManager.filter { it.RATING >1  }.forEach { song ->
+                        playListManager.filter { it.theRating >= 1 }.forEach { song ->
                             Text(
-                                text = "${song.NAME} - theArtistName: ${song.ARTISTNAME}, theRating: ${song.RATING}, Comment: ${song.COMMENT}",
+                                text = "${song.theSongName} - Category: ${song.theArtistName}, Quantity: ${song.theRating}, Comment: ${song.userComment}",
                                 fontSize = 16.sp
                             )
                         }
@@ -123,10 +123,10 @@ class MainActivity : ComponentActivity() {
 
 // Data class for packing list items
 data class playListManager(
-    val NAME: String,
-    val ARTISTNAME: String,
-    val RATING :Int,
-    val COMMENT: String
+    val theSongName :String,
+    val theArtistName: String,
+    val theRating :Int,
+    val userComment: String
 )
 
 
