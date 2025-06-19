@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
@@ -71,6 +72,22 @@ class MainActivity : ComponentActivity() {
                                 color = MaterialTheme.colorScheme.error,
                                 fontSize = 14.sp
                             )
+
                         }
+
+                        Button(onClick = {
+                            if (theSongName.value.isBlank() || theArtistsName.value.isBlank() || theRating.value.isBlank() || userComment.value.toIntOrNull() == null) {
+                                showError.value = true
+                            } else {
+                                playListManager.add(playListManager(theSongName.value, theArtistsName.value, theRating.value.toInt(), userComment.value))
+                                showError.value = false
+                                theSongName.value = "" // Reset fields after successful entry
+                                theArtistsName.value = ""
+                                theRating.value = ""
+                                userComment.value = ""
+                            }
+                        }) {
+
+
 
         }
