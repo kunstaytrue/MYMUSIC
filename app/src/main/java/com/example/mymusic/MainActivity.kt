@@ -103,5 +103,32 @@ class MainActivity : ComponentActivity() {
                             style = MaterialTheme.typography.titleLarge
                         )
 
+                        playListManager.filter { it.RATING >= 2 }.forEach { song ->
+                            Text(
+                                text = "${song.NAME} - theArtistName: ${song.ARTISTNAME}, theRating: ${song.RATING}, Comment: ${song.COMMENT}",
+                                fontSize = 16.sp
+                            )
+                        }
 
+                        Button(onClick = { currentScreen.value = "main" }) {
+                            Text("Return to Main Screen")
+                        }
+                    }
+                }
+            }
         }
+    }
+}
+
+
+// Data class for packing list items
+data class playListManager(
+    val NAME: String,
+    val ARTISTNAME: String,
+    val RATING :Int,
+    val COMMENT: String
+)
+
+
+
+
