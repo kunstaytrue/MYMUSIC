@@ -87,7 +87,16 @@ class MainActivity : ComponentActivity() {
                                 userComment.value = ""
                             }
                         }) {
+                            Text("ADD TO PLAYLIST")
+                        }
 
+                        Button(onClick = { currentScreen.value = "packing_list" }) {
+                            Text("VIEW PLAYLIST")
+                        }
+
+                        Button(onClick = { finish() }) {
+                            Text("EXIT APP")
+                        }
 
 
         }
