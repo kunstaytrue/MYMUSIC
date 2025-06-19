@@ -90,13 +90,18 @@ class MainActivity : ComponentActivity() {
                             Text("ADD TO PLAYLIST")
                         }
 
-                        Button(onClick = { currentScreen.value = "packing_list" }) {
+                        Button(onClick = { currentScreen.value = "playListManager" }) {
                             Text("VIEW PLAYLIST")
                         }
 
                         Button(onClick = { finish() }) {
                             Text("EXIT APP")
                         }
+                    } else if (currentScreen.value == "playListManager") {
+                        Text(
+                            text = "Packing List",
+                            style = MaterialTheme.typography.titleLarge
+                        )
 
 
         }
