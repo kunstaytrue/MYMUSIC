@@ -103,7 +103,7 @@ class MainActivity : ComponentActivity() {
                             style = MaterialTheme.typography.titleLarge
                         )
 
-                        playListManager.filter { it.RATING >= 2 }.forEach { song ->
+                        playListManager.filter { it.RATING >1  }.forEach { song ->
                             Text(
                                 text = "${song.NAME} - theArtistName: ${song.ARTISTNAME}, theRating: ${song.RATING}, Comment: ${song.COMMENT}",
                                 fontSize = 16.sp
